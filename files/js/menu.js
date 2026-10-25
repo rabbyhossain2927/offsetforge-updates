@@ -3,7 +3,7 @@
   var C = window.OF_CONFIG;
   var $ = function (id) { return document.getElementById(id); };
   var cur = "home", prev = "home";
-  var SITE = "https://rabbyhossain.com";
+  var SITE = "https://shop.rabbyhossain.com";
   var TITLES = { how: "How to use", license: "License", updates: "Updates", about: "About" };
 
   var TPL = {
@@ -28,14 +28,17 @@
       '<button id="upCheck" class="outline-btn">Check again</button>' +
       '<p class="note">Offset Forge checks for updates every time it opens. When a new version is ready you will see a popup with what\u2019s new.</p>',
     about:
-      '<div class="about"><div class="logo big"><svg width="22" height="22" viewBox="0 0 18 18" fill="none" stroke="#0b0910" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="3"/><rect x="6" y="6" width="6" height="6" rx="1.5"/></svg></div>' +
-      '<h2>Offset Forge</h2><p id="abVer">Version</p>' +
-      '<p>Set the exact line thickness or size of icons and shapes in Illustrator. Enter the current and target size and Offset Forge applies the right Offset Path for you.</p></div>' +
-      '<div class="info-card"><span class="eyebrow">DEVELOPER</span>' +
-      '<div class="info-row"><span>Created by</span><b>Rabby Hossain</b></div>' +
-      '<div class="info-row"><span>Website</span><b>rabbyhossain.com</b></div></div>' +
-      '<button id="abSite" class="outline-btn">Visit rabbyhossain.com</button>' +
-      '<p class="note">&copy; 2026 Rabby Hossain. All rights reserved.</p>'
+      '<div class="info-card"><span class="eyebrow">PLUGIN</span>' +
+      '<div class="info-row"><span>Product Name</span><b>Offset Forge</b></div>' +
+      '<div class="info-row"><span>Developer</span><b>Rabby Hossain</b></div>' +
+      '<div class="info-row"><span>Website</span><b><button id="abSite" class="linkv">shop.rabbyhossain.com</button></b></div>' +
+      '<div class="info-row"><span>Version</span><b id="abVer">-</b></div>' +
+      '<div class="info-row"><span>Updates</span><b id="abUpd">Checking\u2026</b></div>' +
+      '<div class="info-row"><span>Illustrator</span><b>Illustrator 2019 (v23) and later</b></div>' +
+      '<div class="info-row"><span>Platform</span><b>Windows and macOS</b></div>' +
+      '<div class="info-row"><span>Plugin Type</span><b>CEP panel</b></div>' +
+      '<div class="info-row"><span>Output</span><b>Editable vector shapes (Offset Path, expanded)</b></div>' +
+      '<div class="info-row"><span>Copyright</span><b>\u00a9 2026 Rabby Hossain. All rights reserved.</b></div></div>'
   };
 
   function mark() {
@@ -74,8 +77,14 @@
       run();
     },
     about: function () {
-      $("abVer").textContent = "Version " + C.VERSION;
+      $("abVer").textContent = C.VERSION;
       $("abSite").onclick = function () { OF.openUrl(SITE); };
+      OF.updater.check(true, function (t, k) {
+        var el = $("abUpd"); if (!el) return;
+        var up = /up to date/i.test(t);
+        el.textContent = up ? "Up to date" : t.replace("Update available: ", "Update available \u00b7 ");
+        el.className = up ? "good" : "";
+      });
     }
   };
 
