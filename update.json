@@ -1,9 +1,7 @@
 {
-  "version": "1.5.0",
+  "version": "1.5.1",
   "notes": [
-    "License activation",
-    "Shop-matched purple design",
-    "In-app update popup"
+    "Test release to confirm in-app updates work"
   ],
   "baseUrl": "https://raw.githubusercontent.com/rabbyhossain2927/offsetforge-updates/main/files/",
   "downloadUrl": "https://shop.rabbyhossain.com/",
@@ -18,7 +16,7 @@
     },
     {
       "path": "js/config.js",
-      "sha256": "507a2419769112d34e4184ebe2e63c7fb889f37fceb7e02d014b88253c89427d"
+      "sha256": "2f35cd8c223a5bf00dc0de4cb78cafff4c54e17b34ec4e4bd3c4baf04a24dc73"
     },
     {
       "path": "js/native.js",
