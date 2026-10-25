@@ -90,7 +90,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .mini button{padding:0 8px}
 
 /* ---- v1.5: license + update sheets ---- */
-.overlay{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,9,16,.9)}
+.overlay{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,9,16,.9)}
 .sheet{width:100%;max-width:300px;background:#16121e;border:1px solid #262031;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
 .sheet h2{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
 .sheet p{margin:0;font-size:12px;line-height:1.5;color:var(--sub)}
@@ -104,3 +104,46 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .badge{align-self:flex-start;font-size:10px;font-weight:600;letter-spacing:.1em;color:#0b0910;background:var(--accent);border-radius:6px;padding:3px 8px}
 .notes{margin:0;padding-left:18px;font-size:12px;color:var(--lab);display:flex;flex-direction:column;gap:4px}
 .apply:disabled{opacity:.6;cursor:default}
+
+/* ---- v1.5.2: side menu + pages ---- */
+.scrim{position:fixed;inset:0;z-index:29;background:rgba(0,0,0,.55)}
+.drawer{position:fixed;top:0;left:0;bottom:0;width:min(264px,86%);z-index:30;background:#0b0910;border-right:1px solid #262031;display:flex;flex-direction:column;padding:16px;gap:12px}
+.drawer-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid #262031}
+.d-name{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.d-ver{font-size:11px;color:var(--sub);margin-top:2px}
+.d-nav{display:flex;flex-direction:column;gap:4px}
+.d-item{display:flex;align-items:center;gap:12px;width:100%;height:44px;padding:0 8px;border-radius:12px;background:transparent;color:var(--text);font-size:14px;text-align:left}
+.d-item:hover{background:#16121e}
+.d-item.on{background:#2b2438}
+.d-ico{width:32px;height:32px;flex:none;border-radius:9px;background:#262031;color:#c9b5ff;display:flex;align-items:center;justify-content:center}
+.d-item.on .d-ico{background:var(--accent);color:#0b0910}
+.d-foot{margin-top:auto;padding-top:12px;border-top:1px solid #262031;font-size:12px;color:var(--sub);display:flex;flex-direction:column;gap:4px}
+.d-link{background:transparent;color:var(--accent);font-size:12px;text-align:left;padding:0;width:max-content}
+.d-link:hover{text-decoration:underline}
+.d-copy{font-size:11px;color:#6f687d}
+
+.page{position:fixed;inset:0;z-index:25;background:var(--bg);display:flex;flex-direction:column}
+.page-head{display:flex;align-items:center;gap:8px;padding:12px 16px}
+.page-head h1{flex:1;margin:0;text-align:center;font-size:15px;font-weight:600}
+.boxed{width:36px;height:36px;border:1px solid #262031;background:#0b0910;border-radius:10px;color:#d9d4e8}
+.boxed:hover{background:#1c1626}
+.page-body{flex:1;overflow:auto;padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.info-card{background:#0b0910;border:1px solid #262031;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column}
+.info-card .eyebrow{padding-bottom:8px}
+.info-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #262031;font-size:13px}
+.info-row span{color:var(--sub)}
+.info-row b{font-weight:500;color:var(--text);text-align:right;word-break:break-all}
+.info-row b.good{color:#b5e48c}
+.info-row b.bad{color:#ff8e8e}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.outline-btn{height:42px;border-radius:10px;background:transparent;border:1px solid var(--accent);color:var(--accent);font-size:14px;font-weight:600}
+.outline-btn:hover{background:rgba(183,148,255,.1)}
+.outline-btn:disabled{opacity:.55;cursor:default}
+.note{margin:0;font-size:12px;line-height:1.55;color:var(--sub)}
+.step-card{display:flex;gap:12px;background:#0b0910;border:1px solid #262031;border-radius:12px;padding:12px}
+.step-card i{font-style:normal;width:24px;height:24px;flex:none;border-radius:12px;background:var(--accent);color:#0b0910;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.step-card h3{margin:0 0 3px;font-size:13px;font-weight:600}
+.step-card p{margin:0;font-size:12px;line-height:1.5;color:var(--sub)}
+.about{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:8px 0 4px}
+.about h2{margin:4px 0 0;font-size:18px;font-weight:600}
+.about p{margin:0;font-size:12px;line-height:1.55;color:var(--sub)}
