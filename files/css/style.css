@@ -147,3 +147,37 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 .about{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:8px 0 4px}
 .about h2{margin:4px 0 0;font-size:18px;font-weight:600}
 .about p{margin:0;font-size:12px;line-height:1.55;color:var(--sub)}
+
+/* ---- v1.5.3: compact / narrow layout ---- */
+.panel{padding:12px;gap:12px}
+.logo{width:26px;height:26px;border-radius:7px}
+.logo svg{width:15px;height:15px}
+.name{font-size:14px}
+.card{padding:12px 12px 10px;gap:8px;border-radius:12px}
+.pair{gap:6px}
+.num{padding:6px 8px;border-radius:9px}
+.num input{font-size:20px}
+.arrow{width:14px;height:14px;margin-bottom:11px}
+.result-val{font-size:17px}
+.value-row{gap:6px}
+#offset{font-size:26px;width:78px}
+.step{width:32px;height:32px;border-radius:9px}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.chip{height:28px}
+.seg button{height:28px;font-size:11px}
+.row-label{font-size:12px}
+.small-input{height:28px;width:58px}
+.toggles{gap:10px}
+.apply{height:40px;font-size:13px}
+.hint{font-size:10.5px}
+.drawer{width:min(240px,84%);padding:14px}
+.d-item{height:40px;font-size:13px}
+.d-ico{width:28px;height:28px}
+.page-head{padding:10px 12px}
+.boxed{width:32px;height:32px}
+.page-body{padding:4px 12px 12px}
+.info-card{padding:10px 12px}
+.info-row{font-size:12px;padding:8px 0}
+.sheet{padding:16px;max-width:260px}
+.linkv{background:transparent;color:var(--accent);font-size:12px;padding:0;text-align:right;word-break:break-all}
+.linkv:hover{text-decoration:underline}
