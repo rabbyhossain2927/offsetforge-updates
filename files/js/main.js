@@ -121,25 +121,13 @@
     };
   }
 
-  // ---------- menu ----------
-  $("menuBtn").onclick = function (e) {
-    e.stopPropagation();
-    var mn = $("menu");
-    $("menuNote").textContent = OF.license.isActive() ? "Licensed \u00b7 " + OF.license.masked() : "Not activated";
-    mn.hidden = !mn.hidden;
-  };
-  document.onclick = function () { $("menu").hidden = true; };
-  $("resetBtn").onclick = function () {
+  // ---------- reset + status (used by the side menu) ----------
+  OF.setStatus = setStatus;
+  OF.resetDefaults = function () {
     curEl.value = DEFAULTS.cur; tgtEl.value = DEFAULTS.tgt; offsetEl.value = DEFAULTS.offset;
     miterEl.value = DEFAULTS.miter; join = DEFAULTS.join;
     pressed($("expand"), DEFAULTS.expand); pressed($("keep"), DEFAULTS.keep);
     updateCalc(); syncChips(); syncJoin(); lastSig = "";
-  };
-
-  $("updBtn").onclick = function () { OF.updater.check(true, function (t, k) { setStatus(t, k, 3500); }); };
-  $("deactBtn").onclick = function () {
-    setStatus("Deactivating\u2026", "", 8000);
-    OF.license.deactivate(function (ok, msg) { if (!ok) setStatus(msg, "err", 3500); else setStatus("", "", 0); });
   };
 
   // ---------- apply ----------
