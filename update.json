@@ -1,0 +1,44 @@
+{
+  "version": "1.5.0",
+  "notes": [
+    "License activation",
+    "Shop-matched purple design",
+    "In-app update popup"
+  ],
+  "baseUrl": "https://raw.githubusercontent.com/rabbyhossain2927/offsetforge-updates/main/files/",
+  "downloadUrl": "https://shop.rabbyhossain.com/",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "ef7455d02a357cf95070a96847e43eb75867613e4924628e52facbb3c5f85b02"
+    },
+    {
+      "path": "css/style.css",
+      "sha256": "9ee473467de5f94c44ace290ab316a483c0a586a98b08a98a7acc72fc181989a"
+    },
+    {
+      "path": "js/config.js",
+      "sha256": "507a2419769112d34e4184ebe2e63c7fb889f37fceb7e02d014b88253c89427d"
+    },
+    {
+      "path": "js/native.js",
+      "sha256": "7ae0fb218373c37f3a3cf72f0cdf46dacedbd8e230fc3d8e526357e8e2b925fa"
+    },
+    {
+      "path": "js/license.js",
+      "sha256": "2f571bc25ff8452c7137117700f2e8d04414d361de9795c185fc718a4877c1ca"
+    },
+    {
+      "path": "js/updater.js",
+      "sha256": "488e761c206c9478f3b94f3084128003148c99312765f5b1d584ed3c3f813454"
+    },
+    {
+      "path": "js/main.js",
+      "sha256": "7382ec5c112e11fa440688cc9724c32602574d16ce7417245071e492f40c577a"
+    },
+    {
+      "path": "jsx/host.jsx",
+      "sha256": "3a550dc15ea3d13e33124194276b67657aa5f93ad694e593b5cc4bc28fc4d611"
+    }
+  ]
+}
