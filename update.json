@@ -1,24 +1,24 @@
 {
-  "version": "1.5.2",
+  "version": "1.5.3",
   "notes": [
-    "New side menu: Home, How to use, License, Check for updates, About",
-    "License page with device status and deactivation",
-    "Reset to defaults moved into the menu"
+    "Narrower, more compact panel layout",
+    "About page now lists full plugin details",
+    "Website link updated to shop.rabbyhossain.com"
   ],
   "baseUrl": "https://raw.githubusercontent.com/rabbyhossain2927/offsetforge-updates/main/files/",
   "downloadUrl": "https://shop.rabbyhossain.com/",
   "files": [
     {
       "path": "index.html",
-      "sha256": "c2698137a43a8cba1718aa14ef6d36bbe8c56b2db405eb2720d53a664b7a639b"
+      "sha256": "4e1a0850e11c2cd443bc391ec42d639f55eb785cc6cfce1524cbf6391513543f"
     },
     {
       "path": "css/style.css",
-      "sha256": "13eed91482e51f3015ddc7fea063a1dcda11cde25221cf4437bd531e09f2cf26"
+      "sha256": "241aeba6ffe80817657dce4fbb627207d87dad222eba4382959cb55fb68b1035"
     },
     {
       "path": "js/config.js",
-      "sha256": "3440f9e59c18b6d7587549e9db08c38700cea1cc692afd2297dc132c2882da3d"
+      "sha256": "2e0d7ca2d66cf97b0b0f9d27241dd5dc3affa019e646ce4edc8235cf35a44bf2"
     },
     {
       "path": "js/native.js",
@@ -34,7 +34,7 @@
     },
     {
       "path": "js/menu.js",
-      "sha256": "f58e1ed6e03a80a09dd0bf6007473306e23de1ee5c5e84ef7c1575211ce32330"
+      "sha256": "709eba3200b12857798f0293218350ec110be74671adeb3b991cfd652c02e21c"
     },
     {
       "path": "js/main.js",
