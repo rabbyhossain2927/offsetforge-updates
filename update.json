@@ -1,22 +1,24 @@
 {
-  "version": "1.5.1",
+  "version": "1.5.2",
   "notes": [
-    "Test release to confirm in-app updates work"
+    "New side menu: Home, How to use, License, Check for updates, About",
+    "License page with device status and deactivation",
+    "Reset to defaults moved into the menu"
   ],
   "baseUrl": "https://raw.githubusercontent.com/rabbyhossain2927/offsetforge-updates/main/files/",
   "downloadUrl": "https://shop.rabbyhossain.com/",
   "files": [
     {
       "path": "index.html",
-      "sha256": "ef7455d02a357cf95070a96847e43eb75867613e4924628e52facbb3c5f85b02"
+      "sha256": "c2698137a43a8cba1718aa14ef6d36bbe8c56b2db405eb2720d53a664b7a639b"
     },
     {
       "path": "css/style.css",
-      "sha256": "9ee473467de5f94c44ace290ab316a483c0a586a98b08a98a7acc72fc181989a"
+      "sha256": "13eed91482e51f3015ddc7fea063a1dcda11cde25221cf4437bd531e09f2cf26"
     },
     {
       "path": "js/config.js",
-      "sha256": "2f35cd8c223a5bf00dc0de4cb78cafff4c54e17b34ec4e4bd3c4baf04a24dc73"
+      "sha256": "3440f9e59c18b6d7587549e9db08c38700cea1cc692afd2297dc132c2882da3d"
     },
     {
       "path": "js/native.js",
@@ -31,8 +33,12 @@
       "sha256": "488e761c206c9478f3b94f3084128003148c99312765f5b1d584ed3c3f813454"
     },
     {
+      "path": "js/menu.js",
+      "sha256": "f58e1ed6e03a80a09dd0bf6007473306e23de1ee5c5e84ef7c1575211ce32330"
+    },
+    {
       "path": "js/main.js",
-      "sha256": "7382ec5c112e11fa440688cc9724c32602574d16ce7417245071e492f40c577a"
+      "sha256": "eb0694f8983922b420300be40a9aed9a5ac9ff6de23c7aa70bf88317d5c2fafd"
     },
     {
       "path": "jsx/host.jsx",
