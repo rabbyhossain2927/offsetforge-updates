@@ -1,6 +1,6 @@
 // Offset Forge settings. Edit these two lines if your shop slug / update repo differ.
 window.OF_CONFIG = {
-  VERSION: "1.5.1",
+  VERSION: "1.5.2",
   PRODUCT_SLUG: "offset-forge",
   API_BASE: "https://shop.rabbyhossain.com/api/license",
   SHOP_URL: "https://shop.rabbyhossain.com/",
