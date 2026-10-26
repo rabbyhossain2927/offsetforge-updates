@@ -20,6 +20,15 @@
     return typeof p === "string" && p.indexOf("..") < 0 &&
       /^(index\.html|(css|js|jsx)\/[A-Za-z0-9_.\-]+(\/[A-Za-z0-9_.\-]+)*)$/.test(p);
   }
+  // GitHub first, then GitHub API, then a CDN mirror (for networks that block one of them)
+  function sources(path) {
+    var repo = C.UPDATE_REPO || "rabbyhossain2927/offsetforge-updates";
+    return [
+      { name: "github", url: "https://raw.githubusercontent.com/" + repo + "/main/" + path },
+      { name: "api", url: "https://api.github.com/repos/" + repo + "/contents/" + path + "?ref=main", headers: { Accept: "application/vnd.github.raw+json" } },
+      { name: "cdn", url: "https://cdn.jsdelivr.net/gh/" + repo + "@main/" + path }
+    ];
+  }
   function setMsg(t, k) { var m = $("updMsg"); m.textContent = t || ""; m.className = "msg" + (k ? " " + k : ""); }
   function hide() { $("upd").hidden = true; }
 
@@ -34,13 +43,15 @@
     $("upd").hidden = false;
   }
 
-  // report(text, kind) is optional - used for the manual "Check for updates" menu item
+  // report(text, kind) is optional - used for the manual "Check for updates" buttons
   function check(manual, report) {
-    var u = C.UPDATE_URL + (C.UPDATE_URL.indexOf("?") < 0 ? "?" : "&") + "t=" + Date.now();
-    OF.get(u, function (err, data, status) {
-      var info = null;
-      if (!err && status === 200) { try { info = JSON.parse(OF.text(data)); } catch (e) {} }
-      if (!info || !info.version) { if (manual && report) report("Couldn't check for updates", "warn"); return; }
+    var valid = function (d) { var j = JSON.parse(OF.text(d)); return !!(j && j.version); };
+    OF.getFirst(sources("update.json"), valid, function (err, data) {
+      if (err) {
+        if (manual && report) report("Couldn't check for updates (" + String(err.message).slice(0, 110) + ")", "warn");
+        return;
+      }
+      var info = JSON.parse(OF.text(data));
       if (cmp(info.version, C.VERSION) > 0) { show(info); if (manual && report) report("Update available: v" + info.version, "ok"); }
       else if (manual && report) report("You're up to date (v" + C.VERSION + ")", "ok");
     });
@@ -62,10 +73,10 @@
       var f = files[i];
       if (!f || !safePath(f.path) || !/^[a-f0-9]{64}$/i.test(f.sha256 || "")) return fail("The update file list is invalid");
       $("updGo").textContent = "Downloading " + (i + 1) + "/" + files.length + "\u2026";
-      OF.get(base + f.path + "?t=" + Date.now(), function (err, buf, st) {
-        if (err || st !== 200 || !buf || !buf.length) return fail("Download failed (" + (err ? err.message : "HTTP " + st) + ")");
-        var h = N.crypto.createHash("sha256").update(buf).digest("hex");
-        if (h.toLowerCase() !== f.sha256.toLowerCase()) return fail("An update file failed its integrity check");
+      var want = f.sha256.toLowerCase();
+      var okHash = function (buf) { return N.crypto.createHash("sha256").update(buf).digest("hex").toLowerCase() === want; };
+      OF.getFirst(sources("files/" + f.path), okHash, function (err, buf) {
+        if (err) return fail("Download failed (" + String(err.message).slice(0, 110) + ")");
         got.push({ path: f.path, buf: buf }); i++; next();
       });
     }
