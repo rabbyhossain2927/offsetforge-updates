@@ -46,7 +46,21 @@
   OF.text = function (d) { return typeof d === "string" ? d : d.toString("utf8"); };
 
   OF.openUrl = function (url) {
-    try { window.__adobe_cep__.openURLInDefaultBrowser(url); } catch (e) { try { window.open(url); } catch (e2) {} }
+    if (!/^https:\/\/[A-Za-z0-9.\-]+(\/[^\s"'<>]*)?$/.test(String(url))) return;
+    // 1) CEP's own helper (what CSInterface.openURLInDefaultBrowser uses)
+    try { if (window.cep && window.cep.util && window.cep.util.openURLInDefaultBrowser) { window.cep.util.openURLInDefaultBrowser(url); return; } } catch (e1) {}
+    // 2) older bridge
+    try { if (window.__adobe_cep__ && window.__adobe_cep__.openURLInDefaultBrowser) { window.__adobe_cep__.openURLInDefaultBrowser(url); return; } } catch (e2) {}
+    // 3) Node fallback: ask the OS to open the link
+    try {
+      if (N.ok && req) {
+        var cp = req("child_process");
+        if (N.os.platform() === "win32") cp.execFile("cmd", ["/c", "start", "", url]);
+        else cp.execFile("open", [url]);
+        return;
+      }
+    } catch (e3) {}
+    try { window.open(url); } catch (e4) {}
   };
 
   // Stable per-computer id (computer name + user + OS), hashed
