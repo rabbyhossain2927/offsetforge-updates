@@ -1,7 +1,8 @@
 {
-  "version": "1.5.5",
+  "version": "1.5.6",
   "notes": [
-    "Test update to confirm in-app updates work"
+    "More reliable update checks: backup download sources",
+    "Clearer messages when an update check fails"
   ],
   "baseUrl": "https://raw.githubusercontent.com/rabbyhossain2927/offsetforge-updates/main/files/",
   "downloadUrl": "https://shop.rabbyhossain.com/",
@@ -16,11 +17,11 @@
     },
     {
       "path": "js/config.js",
-      "sha256": "d602adf599df0cc44839b8bb1534372c40429f1225e1a755a75c7e3301992e56"
+      "sha256": "8f2fc0746c864d00e3b219b4e94a2bda58290eacc5bb30e1ac289a9f92142736"
     },
     {
       "path": "js/native.js",
-      "sha256": "1da7f66164e06ddee121362eb4393378eadf9841e0e5b7e98ced26f26692ed11"
+      "sha256": "151f22f3b4b514927be6da0938875930e53c990cc19220b9367b6ff5acb5bca2"
     },
     {
       "path": "js/license.js",
@@ -28,7 +29,7 @@
     },
     {
       "path": "js/updater.js",
-      "sha256": "488e761c206c9478f3b94f3084128003148c99312765f5b1d584ed3c3f813454"
+      "sha256": "7dbc8413b2a1e811fb1dd2603628b5745ff6701412a9ae2cae5d0a1f046c3ba3"
     },
     {
       "path": "js/menu.js",
