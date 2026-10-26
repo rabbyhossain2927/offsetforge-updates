@@ -12,15 +12,16 @@
   }
   window.OF_NODE = N;
 
-  // GET -> cb(err, bufferOrString, status)
-  OF.get = function (url, cb, hops) {
+  // GET -> cb(err, bufferOrString, status).  headers (optional) = extra request headers
+  OF.get = function (url, cb, hops, headers) {
     hops = hops || 0;
-    var done = false;
+    var done = false, k;
     function fin(e, d, s) { if (done) return; done = true; cb(e, d, s); }
     if (!N.ok) {
       try {
         var x = new XMLHttpRequest();
         x.open("GET", url, true); x.timeout = 10000;
+        if (headers) { for (k in headers) { try { x.setRequestHeader(k, headers[k]); } catch (eh) {} } }
         x.onload = function () { fin(null, x.responseText, x.status); };
         x.onerror = function () { fin(new Error("Network error")); };
         x.ontimeout = function () { fin(new Error("Timed out")); };
@@ -28,11 +29,13 @@
       } catch (e3) { fin(e3); }
       return;
     }
+    var h = { "User-Agent": "OffsetForge", "Cache-Control": "no-cache" };
+    if (headers) { for (k in headers) h[k] = headers[k]; }
     var lib = url.indexOf("https:") === 0 ? N.https : N.http;
-    var rq = lib.get(url, { headers: { "User-Agent": "OffsetForge", "Cache-Control": "no-cache" } }, function (res) {
+    var rq = lib.get(url, { headers: h }, function (res) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location && hops < 5) {
         res.resume(); done = true;
-        return OF.get(N.url.resolve(url, res.headers.location), cb, hops + 1);
+        return OF.get(N.url.resolve(url, res.headers.location), cb, hops + 1, headers);
       }
       var chunks = [];
       res.on("data", function (c) { chunks.push(c); });
@@ -41,6 +44,23 @@
     });
     rq.setTimeout(10000, function () { rq.abort(); fin(new Error("Timed out")); });
     rq.on("error", function (e5) { fin(e5); });
+  };
+
+  // Try several sources in order. list = [{name,url,headers}], ok(data) validates, cb(err, data, sourceName)
+  OF.getFirst = function (list, ok, cb) {
+    var i = 0, errs = [];
+    function why(e) { return String((e && (e.code || e.message)) || e).slice(0, 36); }
+    (function next() {
+      if (i >= list.length) return cb(new Error(errs.join("; ") || "no source"));
+      var src = list[i++];
+      OF.get(src.url, function (err, data, st) {
+        var good = false;
+        if (!err && st === 200 && data) { try { good = !ok || ok(data); } catch (e) { good = false; } }
+        if (good) return cb(null, data, src.name);
+        errs.push(src.name + ": " + (err ? why(err) : (st !== 200 ? "HTTP " + st : "bad data")));
+        next();
+      }, 0, src.headers);
+    })();
   };
 
   OF.text = function (d) { return typeof d === "string" ? d : d.toString("utf8"); };
