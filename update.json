@@ -1,8 +1,7 @@
 {
-  "version": "1.5.4",
+  "version": "1.5.5",
   "notes": [
-    "Panel now adapts cleanly when you make it narrow",
-    "Shop and website links now open in your browser"
+    "Test update to confirm in-app updates work"
   ],
   "baseUrl": "https://raw.githubusercontent.com/rabbyhossain2927/offsetforge-updates/main/files/",
   "downloadUrl": "https://shop.rabbyhossain.com/",
@@ -17,7 +16,7 @@
     },
     {
       "path": "js/config.js",
-      "sha256": "008e3f8fc79de989956fff5d3628bfa861b89487bb965d90c67ca538443e6125"
+      "sha256": "d602adf599df0cc44839b8bb1534372c40429f1225e1a755a75c7e3301992e56"
     },
     {
       "path": "js/native.js",
