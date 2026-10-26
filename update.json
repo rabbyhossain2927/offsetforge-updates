@@ -1,9 +1,8 @@
 {
-  "version": "1.5.3",
+  "version": "1.5.4",
   "notes": [
-    "Narrower, more compact panel layout",
-    "About page now lists full plugin details",
-    "Website link updated to shop.rabbyhossain.com"
+    "Panel now adapts cleanly when you make it narrow",
+    "Shop and website links now open in your browser"
   ],
   "baseUrl": "https://raw.githubusercontent.com/rabbyhossain2927/offsetforge-updates/main/files/",
   "downloadUrl": "https://shop.rabbyhossain.com/",
@@ -14,15 +13,15 @@
     },
     {
       "path": "css/style.css",
-      "sha256": "241aeba6ffe80817657dce4fbb627207d87dad222eba4382959cb55fb68b1035"
+      "sha256": "1c7457ce32ea40766251f9461294ad6eb2af12e7a5aff3654eb198b17d91aac6"
     },
     {
       "path": "js/config.js",
-      "sha256": "2e0d7ca2d66cf97b0b0f9d27241dd5dc3affa019e646ce4edc8235cf35a44bf2"
+      "sha256": "008e3f8fc79de989956fff5d3628bfa861b89487bb965d90c67ca538443e6125"
     },
     {
       "path": "js/native.js",
-      "sha256": "7ae0fb218373c37f3a3cf72f0cdf46dacedbd8e230fc3d8e526357e8e2b925fa"
+      "sha256": "1da7f66164e06ddee121362eb4393378eadf9841e0e5b7e98ced26f26692ed11"
     },
     {
       "path": "js/license.js",
